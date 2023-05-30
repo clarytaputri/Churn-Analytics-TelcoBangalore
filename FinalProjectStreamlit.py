@@ -5,7 +5,7 @@ import pandas as pd
 
 # Konfigurasi awal streamlit
 st.set_page_config(
-    page_title = 'FSB - Final Project', 
+    page_title = 'FSB - Claryta - Final Project', 
     page_icon = '🐧', 
     layout = "wide"
 )
@@ -34,7 +34,7 @@ def header():
     spacer1, row1, spacer2 = st.columns([0.1, 7.2, 0.1])
     
     row1.title('Telco Churn Analysis')
-    row1.subheader('Streamlit App by [Bachtiyar M. Arief](https://www.linkedin.com/in/bachtiyarma/)')
+    row1.subheader('Streamlit App by [Claryta Putri Dedyana Wati](https://www.linkedin.com/in/claryta-putri-dedyana-wati/)')
     
     row1.header('Latar Belakang')
     
@@ -588,7 +588,7 @@ def tampilkan_demografi(data, url_img_man, url_img_woman):
 if __name__ == "__main__":
     header()
     
-    url_data = 'https://raw.githubusercontent.com/bachtiyararif/Final-Project-FSB/main/telecom_customer_churn.csv'
+    url_data = 'https://raw.githubusercontent.com/clarytaputri/Claryta-Final-Project-Churn-Analytics/main/telecom_customer_churn.csv'
     data = ekstrak_data(url_data)
     
     tampilkan_data(data)
@@ -596,7 +596,7 @@ if __name__ == "__main__":
     tampilkan_alasan_churn(data)
     tampilkan_revenue_impact(data)
     
-    url_img_man = 'https://raw.githubusercontent.com/bachtiyararif/Final-Project-FSB/main/man.png'
-    url_img_woman = 'https://raw.githubusercontent.com/bachtiyararif/Final-Project-FSB/main/woman.png'
+    url_img_man = 'https://raw.githubusercontent.com/clarytaputri/Claryta-Final-Project-Churn-Analytics/main/man.png'
+    url_img_woman = 'https://raw.githubusercontent.com/clarytaputri/Claryta-Final-Project-Churn-Analytics/main/woman.png'
     
     tampilkan_demografi(data, url_img_man, url_img_woman)
