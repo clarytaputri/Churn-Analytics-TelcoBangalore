@@ -33,7 +33,7 @@ def ekstrak_data(url_data):
 def header():
     spacer1, row1, spacer2 = st.columns([0.1, 7.2, 0.1])
     
-    row1.title('Telco Churn Analysis')
+    row1.title('Telco Bangalore Churn Analysis')
     row1.subheader('Streamlit App by [Claryta Putri Dedyana Wati](https://www.linkedin.com/in/claryta-putri-dedyana-wati/)')
     
     row1.header('Background')
