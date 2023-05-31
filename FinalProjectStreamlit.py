@@ -36,19 +36,19 @@ def header():
     row1.title('Telco Churn Analysis')
     row1.subheader('Streamlit App by [Claryta Putri Dedyana Wati](https://www.linkedin.com/in/claryta-putri-dedyana-wati/)')
     
-    row1.header('Latar Belakang')
+    row1.header('Background')
     
     row1.markdown("""
-        Customer Churn adalah persentase pelanggan yang meninggalkan bisnis atau berhenti menggunakan layanan. 
-        Tingkat churn dihitung berdasarkan jumlah pelanggan yang meninggalkan bisnis Anda dalam waktu tertentu. 
-        Customer churn penting untuk diketahui bisnis karena merupakan gambaran keberhasilan perusahaan dalam mempertahankan pelanggan.<br>
+        <b>Customer churn</b> refers to the proportion of customers who terminate their relationship with a business or cease utilizing its services. 
+        The churn rate is determined by the number of customers who discontinue their association with the business within a specific timeframe. 
+        Gaining an understanding of customer churn is crucial for companies as it serves as an indicator of their success in retaining customers.<br>
 
-        <b>Telco Bangalore</b> merupakan perusahaan (fiktif) dibidang telekomunikasi yang tidak hanya menyediakan jasa layanan telepon, 
-        namun juga berkembang menyediakan jasa layanan Internet yang aman dan terjamin kualitasnya, <i>streaming</i> TV/Movies/Music dan layanan lainnya.
-        Walaupun layanan yang disajikan oleh perusahaan ini terbilang menjanjikan, namun tidak menutup kemungkinan akan 
-        selalu ada customer yang akhirnya berhenti berlangganan (<i>churn</i>). Banyak faktor yang mengakibatkan hal ini terjadi, untuk itu perlu bagi
-        perusahaan menganalisa faktor apa saja yang menyebabkan pelanggan akhirnya memutuskan untuk berhenti berlangganan sehingga perusahaan
-        dapat membuat suatu kebijakan berlandaskan analisa data agar dapat mempertahankan pelanggan berharganya.<br>
+        <b>Telco Bangalore</b> 
+        Telco Bangalore is a fictional telecommunications company that not only offers telephone services but has also expanded its offerings to include 
+        secure and high-quality internet services, streaming of TV shows, movies, music, and various other services. Despite the promising nature of the 
+        services provided by the company, it is inevitable that some customers will eventually decide to unsubscribe or churn. Numerous factors contribute 
+        to this occurrence, underscoring the significance for the company to analyze these factors comprehensively.By doing so, they can formulate data-
+        driven policies that enable them to retain their valuable customers.<br>
         """, 
         unsafe_allow_html = True
     )
@@ -58,7 +58,7 @@ def tampilkan_data(data):
     spacer1, row1, spacer2 = st.columns([0.1, 7.2, 0.1])
     row1.header('Data')
     row1.markdown(
-        'Data yang digunakan pada proyek ini disajikan dalam tabel berikut',
+        'The data used in this project is presented in the following table',
         unsafe_allow_html = True
     )
     
@@ -69,7 +69,7 @@ def tampilkan_data(data):
     )
         
     row3.metric(
-        label = "Total Kolom", 
+        label = "Total Coloumn", 
         value = data.shape[1]
     )
     
@@ -122,7 +122,7 @@ def perhitungan_customer_status(data):
 def tampilkan_status_customer(data):
     
     spacer1, row1, spacer2 = st.columns([0.1, 7.2, 0.1])
-    row1.header('Gambaran Awal')
+    row1.header('Visualization')
     
     spacer1, row1, spacer2, row2, spacer3 = st.columns([0.1, 4, 0.1, 3.2, 0.1])
     cust_status, fig = perhitungan_customer_status(data)
@@ -137,16 +137,15 @@ def tampilkan_status_customer(data):
     )
     
     row2.markdown(f"""
-        Pada grafik Pie disamping, diperoleh fakta bahwa sebanyak <b>{total_cust_churn}</b> 
-        customer tidak lagi melanjutkan berlangganan (<i>Churned</i>),
-        <b>{total_stay_churn}</b> customer masih aktif berlangganan (<i>Stayed</i>) 
-        dan untuk periode ini perusahaan berhasil memperoleh <b>{total_joined_churn}</b> customer baru (<i>Joined</i>).
+        Based on the pie, it can been observed that <b>{total_cust_churn}</b> 
+        customers have discontinued their subscribtions (<i>Churned</i>),
+        while <b>{total_stay_churn}</b> customers remain active (<i>Stayed</i>) 
+        and the company has acquired <b>{total_joined_churn}</b> new customers during this period (<i>Joined</i>).
         <br><br>
         
-        Jika diamati, proporsi customer yang <i>churned</i> lebih besar daripada proporsi customer baru (<i>joined</i>) yang didapatkan. 
-        Sehingga perlu bagi perusahaan untuk mengetahui dari data yang ada faktor apa saja yang menyebabkan customer menghentikan
-        berlangganan pada perusahaan dan perlu segera menetapkan strategi lebih lanjut untuk meretensi customer yang masih berlangganan dan
-        meningkatkan jumlah customer baru.
+        Upon close examination, the propotion of <i>churned</i> customers is larger than the propotion of new customers (<i>joined</i>). 
+        Therefore it is crucial for company to analyze the available data to identify the factors that contribute customer churn  
+        and promptly establish further strategies to retain existing subscribers and increase the number of new customers.
         """,
         unsafe_allow_html = True                               
     )
@@ -222,19 +221,20 @@ def perhitungan_churn_reason(data):
 @st.cache_resource
 def tampilkan_alasan_churn(data):
     spacer1, row1, spacer2 = st.columns([0.1, 7.2, 0.1])
-    row1.header('Alasan Customer Churn?')
+    row1.header('Reason for Customer Churn?')
     
     spacer1, row1, row2 = st.columns([0.1, 5, 6])
     cust_churn_category, fig = perhitungan_churn_reason(data)
     
     row1.markdown(f"""
-       <br>Dari hasil penelusuran, ternyata alasan terbesar banyak customer berpindah haluan dari perusahaan adalah
-       karena Kompetitor. Lebih spesifik ternyata perusahaan kompetitor ternyata memiliki device atau teknologi 
-       yang lebih baik / canggih. Alasan berikutnya berkorelasi dengan alasan utama pelanggan churn yakni ketidakpuasan
-       pelanggan terhadap produk perusahaan yang disajikan. Dengan demikian perusahaan harus melakukan evaluasi terkait
-       produk layanan dan menganalisa produk dari kompetitor yang menarik customer. Tidak hanya dari sisi produk yang
-       perlu di upgrade, pelayanan lain seperti mengevaluasi sikap dan kinerja karyawan, melakukan promo dan alasan lainnya
-       juga harus menjadi perhatian perusahaan jika ingin mempertahankan customer lebih baik kedepannya.
+       <br> Upon investigation, Upon investigation, it has been found that the primary reason for a significant number 
+       of customers switching away from the company is due to competition. Specifically, it appears that competitor 
+       companies offer devices or technologies that are superior or more advanced. Another correlated reason relates 
+       to the main cause of customer churn, which is dissatisfaction with the products provided by the company. 
+       Consequently, the company must evaluate its service offerings, analyze the attractive products offered by competitors,
+       and make necessary upgrades. It is not only product-related aspects that require improvement, but also other factors 
+       such as assessing the attitudes and performance of employees, implementing promotions, and considering other reasons for churn. 
+       These factors should be prioritized by the company if they aim to enhance customer retention in the future.
         """,
         unsafe_allow_html = True                               
     )
@@ -292,7 +292,7 @@ def tampilkan_revenue_impact(data):
     fig3 = text_graph('Churn', '$ ' + str(revenue_churn) + 'M', '#ff0000')
     
     spacer1, row1, spacer2 = st.columns([0.1, 7.2, 0.1])
-    row1.header('Dampak Terhadap Perusahaan')
+    row1.header('Impact On The Company')
     
     spacer1, row2, row3, row4, spacer2 = st.columns([0.1, 3, 3, 3, 0.1])
     
@@ -313,11 +313,11 @@ def tampilkan_revenue_impact(data):
     
     spacer1, row5, spacer2 = st.columns([0.1, 7.2, 0.1])
     row5.markdown(f"""
-        Dampak customer saat memutuskan untuk tidak lagi berlangganan dengan perusahaan adalah dapat dengan jelas terlihat bahwa perusahaan merugi sebesar 
-        \${revenue_churn}M (lebih detail = \${round(raw_revenue_churn, 2)}). Hal ini menjadi perhatian perusahaan dikarenakan jumlah kerugian karena customer yang churned di
-        bandingkan dengan jumlah pendapatan baru yang diperoleh perusahaan yakni sebesar \${revenue_joined}M (lebih detail = \${round(raw_revenue_joined, 2)}).
-        Sehingga dengan melihat ketakseimbangan pendapatan yang terjadi perlu menjadi perhatian besar terkait penyebab customer tidak lagi berlangganan, sehingga dampak yang
-        lebih besar yang mungkin akan terjadi dapat diminimalkan resikonya.
+        The impact of customers deciding to unsubscribe from the company is evident in the significant loss of \${revenue_churn}M (in more detail = \${round(raw_revenue_churn, 2)}). 
+        This is a concern for the company, as the financial loss resulting from customer churn outweighs the revenue generated from new customers, 
+        which amounts to \${revenue_joined}M (lebih detail = \${round(raw_revenue_joined, 2)}). Therefore, considering the imbalance in revenue, it is crucial for the 
+        company to pay close attention to the reasons behind customer attrition in order to minimize the potential for greater negative impacts.
+        
         """, 
         unsafe_allow_html = True
     )
@@ -344,7 +344,7 @@ def distribusi_umur(data, gender, color):
         bargap = 0.02,
         showlegend = False,
         xaxis = dict(
-            title = f"Distribusi Usia Pelanggan<br>{gender}",
+            title = f"Customer Age Distribution<br>{gender}",
             zeroline = False,
             showgrid = False
         ),
@@ -458,7 +458,7 @@ def contract_type(data, gender):
         height = 425,
         showlegend = False,
         xaxis = dict(
-            title = f"Distribusi Usia Pelanggan<br>{gender}"
+            title = f"Customer Age Distribution<br>{gender}"
         ),
         plot_bgcolor = 'rgba(0, 0, 0, 0)',
         paper_bgcolor = 'rgba(0, 0, 0, 0)'
@@ -475,20 +475,20 @@ def tampilkan_demografi(data, url_img_man, url_img_woman):
     male_color, female_color = '#fbe280', '#5bbc95'
     
     spacer1, row1, spacer2 = st.columns([0.1, 7.2, 0.1])
-    row1.header('Demografi Customer Berdasarkan Status')
+    row1.header('Customer Demographics by Status')
     
     with row1:
-        st.markdown(f"""
-            Dalam dunia bisnis yang semakin kompetitif, pemahaman mendalam tentang pelanggan merupakan kunci keberhasilan. Setiap perusahaan tentu berharap
-            untuk dapat meningkatkan pemahaman tentang segmentasi pelanggan, memperkuat strategi pemasaran dan memberikan pengalaman yang lebih personal dan relevan bagi 
-            setiap pelanggan. Sehingga penting bagi perusahaan untuk memfokuskan perhatian utamanya pada pelanggan berdasakan gender (jenis kelamin) dan status pelanggan saat ini.
-            Tentu hal ini perlu perusahaan ketahui untuk dapat meningkatkan produk maupun layanannya namun dengan segmentasi yang lebih personal berdasarkan gender dan mengetahui jenis 
-            kebutuhannya
+        st.markdown(f"""         
+            In today's highly competitive business world, a deep understanding of customers is crucial for success. Every company aims to enhance their
+            understanding of customer segmentation, strengthen marketing strategies, and provide more personalized and relevant experiences to each individual 
+            customer. Therefore, it is vital for companies to prioritize their focus on customers based on gender and their current status. This knowledge is 
+            essential for companies to improve their products and services, but with a more personalized segmentation based on gender and a clear understanding 
+            of their specific needs.
             """, 
             unsafe_allow_html = True
         )
         status = st.multiselect(
-            label = 'Pilih Status Customers',
+            label = 'Select Customer Status',
             options = data['customer_status'].unique(),
             default = 'Stayed'
         )
