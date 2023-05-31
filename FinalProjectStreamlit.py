@@ -144,7 +144,7 @@ def tampilkan_status_customer(data):
         <br><br>
         
         Upon close examination, the propotion of <i>churned</i> customers is larger than the propotion of new customers (<i>joined</i>). 
-        Therefore it is crucial for company to analyze the available data to identify the factors that contribute customer churn  
+        Therefore it is crucial for company to analyze the available data to identify the factors that contribute churn 
         and promptly establish further strategies to retain existing subscribers and increase the number of new customers.
         """,
         unsafe_allow_html = True                               
